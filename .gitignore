@@ -1,1 +1,39 @@
+# Dependencies
 node_modules
+.pnp
+.pnp.*
+
+# Next.js build output (regenerated on every build/dev — never commit)
+.next
+out
+build
+
+# Production / deployment
+dist
+
+# Environment / secrets
+.env
+.env*.local
+.env.local
+.env.development.local
+.env.production.local
+.env.test.local
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+
+# Editor / OS
+.DS_Store
+*.pem
+.vscode/
+.idea/
+
+# Vercel
+.vercel
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts.bak
