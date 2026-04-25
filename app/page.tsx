@@ -6,6 +6,7 @@ import {
   ChatIcon, CardIcon, RefreshIcon, BoltIcon, GlobeIcon,
   TargetIcon, MapPinIcon,
   ShieldIcon, ZapSmallIcon, KeyIcon, PlugSmallIcon,
+  InstagramIcon, MessengerIcon, CommentDmIcon,
 } from "@/components/Icons";
 
 export const metadata = pageMetadata({
@@ -75,6 +76,12 @@ const INDUSTRIES = [
   { slug: "healthcare", name: "Healthcare & Clinics", desc: "Appointment booking, medication availability, reminders. Never miss a patient.", Icon: StethoscopeIcon },
   { slug: "education", name: "Education & Academies", desc: "Course info, fees, trial-class bookings, fee reminders. Admission season handled.", Icon: GraduationIcon },
   { slug: "ecommerce", name: "E-commerce", desc: "Size guides, order tracking, returns, cart recovery — customers never wait.", Icon: GlobeIcon },
+];
+
+const COMING_SOON = [
+  { title: "Instagram DM automation", desc: "Bring your Ghost Employee to Instagram Direct Messages. Same intelligence, new channel.", Icon: InstagramIcon },
+  { title: "Facebook Messenger", desc: "Handle Messenger inquiries with the same AI that powers your WhatsApp.", Icon: MessengerIcon },
+  { title: "Comment-to-DM (Instagram)", desc: "Auto-reply to Instagram comments and slide into DM with a personalized follow-up.", Icon: CommentDmIcon },
 ];
 
 export default function HomePage() {
@@ -335,6 +342,47 @@ export default function HomePage() {
                 <ArrowRight />
               </Link>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ====================================================================
+          COMING SOON  — channel expansion roadmap, white card on light bg
+      ===================================================================== */}
+      <section className="bg-ink-50 sec-bottom-sp">
+        <div className="mx-auto max-w-[1300px] px-6">
+          <div className="rounded-stellar-card bg-white p-6 sm:p-12 lg:p-16">
+            <div className="mb-12 text-center">
+              <div className="mb-4 inline-flex items-center gap-2 rounded-stellar-pill bg-brand-50 px-4 py-1.5 text-[12px] font-bold uppercase tracking-wider text-brand-700">
+                Roadmap
+              </div>
+              <h2 className="home-section-title">Coming soon — more channels.</h2>
+              <p className="mx-auto mt-4 max-w-2xl text-[16px] leading-[1.6] text-ink-500 sm:text-[20px]">
+                Your Ghost Employee, on every channel your customers actually use.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+              {COMING_SOON.map((c) => (
+                <div
+                  key={c.title}
+                  className="relative flex flex-col rounded-stellar-md border-2 border-dashed border-ink-100 bg-ink-50 p-8"
+                >
+                  <span className="absolute right-5 top-5 inline-flex items-center rounded-stellar-pill bg-white px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-brand-700">
+                    Coming soon
+                  </span>
+                  <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-[14px] bg-brand-500 text-white">
+                    <c.Icon size={24} />
+                  </div>
+                  <h3 className="mb-3 text-[18px] font-bold leading-[1.4] text-ink-900">{c.title}</h3>
+                  <p className="m-0 text-[14px] leading-[1.6] text-ink-500">{c.desc}</p>
+                </div>
+              ))}
+            </div>
+
+            <p className="mt-10 text-center text-[14px] text-ink-500">
+              Want early access? <a href="mailto:hello@waintel.ai" className="font-semibold text-brand-500 hover:text-brand-700">Email us</a> and we'll let you know when it ships.
+            </p>
           </div>
         </div>
       </section>

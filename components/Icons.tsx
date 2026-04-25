@@ -170,3 +170,25 @@ export const PlugSmallIcon = ({ size = 16, className = "" }: IconProps) => (
     <path d="M12 14v4a3 3 0 0 0 3 3" />
   </svg>
 );
+
+export const InstagramIcon = ({ size = 28, className = "" }: IconProps) => (
+  <svg {...base(size, className)}>
+    <rect x="3" y="3" width="18" height="18" rx="5" />
+    <circle cx="12" cy="12" r="4" />
+    <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none" />
+  </svg>
+);
+
+export const MessengerIcon = ({ size = 28, className = "" }: IconProps) => (
+  <svg {...base(size, className)}>
+    <path d="M12 2C6.5 2 2 6.1 2 11.2c0 2.9 1.4 5.5 3.7 7.2V22l3.4-1.9c.9.3 1.9.4 2.9.4 5.5 0 10-4.1 10-9.3S17.5 2 12 2z" />
+    <path d="M7 13l3-3 2.5 2L17 9l-3 3-2.5-2z" strokeWidth="1.6" />
+  </svg>
+);
+
+export const CommentDmIcon = ({ size = 28, className = "" }: IconProps) => (
+  <svg {...base(size, className)}>
+    <path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8A8.5 8.5 0 0 1 8.7 4a8.4 8.4 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8z" />
+    <path d="M14 9l3 3-3 3M8 12h9" />
+  </svg>
+);
