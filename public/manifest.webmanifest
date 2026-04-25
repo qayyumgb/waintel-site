@@ -1,0 +1,12 @@
+{
+  "name": "Waintel.ai",
+  "short_name": "Waintel",
+  "description": "WhatsApp AI Agents that close sales for your business",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1D9E75",
+  "icons": [
+    { "src": "/favicon.ico", "sizes": "any" }
+  ]
+}
