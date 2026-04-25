@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { APP_URL, pageMetadata } from "@/lib/seo";
+import { PricingFAQ } from "./PricingFAQ";
 
 export const metadata = pageMetadata({
   title: "Pricing",
@@ -8,306 +9,264 @@ export const metadata = pageMetadata({
   path: "/pricing",
 });
 
-interface Plan {
-  name: string;
-  tagline: string;
-  price: string;
-  perMonth: string;
-  description: string;
-  features: string[];
-  cta: string;
-  ctaHref: string;
-  badge?: string;
-  highlighted?: boolean;
-  enterprise?: boolean;
-}
-
-const PLANS: Plan[] = [
+const PLANS = [
   {
     name: "Starter",
-    tagline: "Small businesses",
-    price: "$29",
-    perMonth: "/month",
-    description: "Solo founders, single-location shops, freelancers replying to WhatsApp daily.",
+    currency: "$",
+    amount: "29",
+    description: "Try Waintel risk-free with everything you need to close your first deals.",
+    cta: "Start free",
+    primary: false,
     features: [
+      "1,000 AI messages / month",
       "1 WhatsApp number",
-      "500 AI conversations / month",
-      "1 knowledge base file",
-      "Voice note understanding",
+      "1 industry template",
       "Email support",
-      "Multi-language (Urdu, English, Arabic)",
     ],
-    cta: "Start free trial",
-    ctaHref: `${APP_URL}/register?plan=starter`,
   },
   {
     name: "Business",
-    tagline: "Growing teams",
-    price: "$79",
-    perMonth: "/month",
-    description: "Multi-product stores, growing service businesses, teams of 2–20.",
+    currency: "$",
+    amount: "79",
+    description: "For growing businesses that need real automation and CRM sync.",
+    cta: "Start free",
+    primary: false,
     features: [
+      "5,000 AI messages / month",
       "3 WhatsApp numbers",
-      "5,000 conversations / month",
-      "Unlimited knowledge files",
-      "Voice notes + image understanding",
-      "Live human handoff",
-      "Live inbox for your team",
       "All industry templates",
-      "CRM + Google Sheets integration",
+      "CRM integrations",
       "Priority support",
     ],
-    cta: "Start free trial",
-    ctaHref: `${APP_URL}/register?plan=business`,
-    badge: "Most Popular",
-    highlighted: true,
   },
   {
     name: "Agency",
-    tagline: "White-label resellers",
-    price: "$199",
-    perMonth: "/month",
-    description: "Marketing agencies and consultants reselling Waintel under their own brand.",
+    currency: "$",
+    amount: "199",
+    description: "Manage multiple clients from one dashboard, with full white-label.",
+    cta: "Start free",
+    primary: false,
     features: [
-      "Unlimited WhatsApp numbers",
-      "Unlimited conversations",
-      "🏢 White-label branding (your logo, colors, domain)",
-      "👥 Resell to your own clients",
-      "💰 Set your own client pricing & keep the margin",
-      "📊 Multi-client dashboard & revenue tracking",
-      "Public API access (developer keys + webhooks)",
-      "Conversation Intelligence engine",
-      "Dedicated success manager",
+      "20,000 AI messages / month",
+      "10 WhatsApp numbers",
+      "White-label dashboard",
+      "Public API + webhooks",
+      "Dedicated support manager",
     ],
-    cta: "Start free trial",
-    ctaHref: `${APP_URL}/register?plan=agency`,
   },
   {
     name: "Enterprise",
-    tagline: "Custom",
-    price: "Custom",
-    perMonth: "",
-    description: "Banks, hospitals, government, and businesses with 100k+ conversations / month.",
+    currency: "",
+    amount: "Custom",
+    description: "Best value. Unlimited scale, dedicated infra, and SLA-backed support.",
+    cta: "Contact sales",
+    primary: true,
     features: [
-      "Volume discount on conversations",
-      "Custom AI fine-tuning on your data",
-      "On-premise deployment option",
-      "SOC 2, ISO 27001, GDPR, HIPAA support",
+      "Unlimited AI messages",
+      "Unlimited WhatsApp numbers",
       "Dedicated infrastructure",
-      "SLA + 24/7 phone support",
-      "Custom integrations (SAP, Oracle, etc.)",
-      "Dedicated account team",
+      "Custom industry training",
+      "99.9% uptime SLA",
     ],
-    cta: "Talk to sales",
-    ctaHref: "/contact",
-    enterprise: true,
   },
 ];
 
-const FAQ = [
-  {
-    q: "What counts as a 'conversation'?",
-    a: "A conversation is a 24-hour window with one customer. Unlimited messages within that window count as one conversation. This matches how Meta charges for WhatsApp Business API, so our pricing stays transparent and predictable.",
-  },
-  {
-    q: "What happens after the 7-day free trial?",
-    a: "After 7 days (or 200 free messages, whichever comes first), the bot stops sending replies until you upgrade. Your conversations and data are kept — when you subscribe, the bot picks up exactly where it left off.",
-  },
-  {
-    q: "Can I switch plans later?",
-    a: "Yes, anytime. Upgrade or downgrade from your billing page. Changes take effect at the next billing cycle — no partial-month refunds, but no surprise charges either.",
-  },
-  {
-    q: "Do you charge extra for messages beyond the plan limit?",
-    a: "No surprise fees. If you hit your limit, the bot keeps tracking activity but stops sending replies until the next month or until you upgrade. We never auto-charge overage.",
-  },
-  {
-    q: "How is this different from a generic chatbot?",
-    a: "Waintel is purpose-built for Pakistan and MENA businesses. Pre-trained on Roman Urdu, JazzCash/Easypaisa flows, local addresses, and industry-specific qualification (real estate, healthcare, education, etc.). Generic chatbots from Western companies don't understand the way your customers actually message.",
-  },
-  {
-    q: "Do I need technical skills to set this up?",
-    a: "No. The dashboard is point-and-click. Connect WhatsApp via QR code, pick your industry template, paste your FAQ document, customize tone — done. Most customers go live in under 30 minutes.",
-  },
-  {
-    q: "Can I cancel anytime?",
-    a: "Yes. Cancel from your billing page in one click. No commitments, no exit interviews. Your subscription stays active until the end of your current billing period.",
-  },
-];
+const CheckIcon = () => (
+  <svg width="17" height="12" viewBox="0 0 17 12" fill="none">
+    <path d="M1 6L6 11L16 1" stroke="#1D9E75" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+const GlobeIcon = () => (
+  <svg width="24" height="17" viewBox="0 0 24 17" fill="none">
+    <path
+      d="M12.0039 8.72295V8.73586M15.6479 5.07109C16.6141 6.03968 17.1569 7.3532 17.1569 8.72279C17.1569 10.0924 16.6141 11.4059 15.6479 12.3745M19.2931 1.41797C20.2504 2.37722 21.0097 3.51602 21.5278 4.76937C22.0459 6.02271 22.3125 7.36604 22.3125 8.72266C22.3125 10.0793 22.0459 11.4226 21.5278 12.6759C21.0097 13.9293 20.2504 15.0681 19.2931 16.0273M8.35476 12.3745C7.38851 11.4059 6.84571 10.0924 6.84571 8.72279C6.84571 7.3532 7.38851 6.03968 8.35476 5.07109M4.7069 16.0273C3.74963 15.0681 2.99029 13.9293 2.47222 12.6759C1.95415 11.4226 1.6875 10.0793 1.6875 8.72266C1.6875 7.36604 1.95415 6.02271 2.47222 4.76937C2.99029 3.51602 3.74963 2.37722 4.7069 1.41797"
+      stroke="#1D9E75"
+      strokeWidth="1.66667"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
 
 export default function PricingPage() {
   return (
-    <>
-      {/* ── HERO ──────────────────────────────────────────────────────── */}
-      <section className="bg-hero-gradient pt-12 pb-24 lg:pt-20 lg:pb-32">
-        <div className="container text-center">
-          <span className="eyebrow-light">Pricing</span>
-          <h1 className="mt-5 text-display-xl text-white text-balance">
-            Simple pricing.{" "}
-            <span className="text-brand-300">Pay only when it works.</span>
-          </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-[18px] leading-relaxed text-white/85">
-            Start with a 7-day free trial. No credit card. Pick a plan when you've seen the bot close real sales.
-          </p>
-        </div>
-      </section>
+    <div>
+      {/* ---------- HEADER ---------- */}
+      <section className="bg-white pb-10 pt-28 sm:pt-32 lg:pt-36">
+        <div className="mx-auto max-w-[1200px] px-6">
+          <div className="mb-12 text-center">
+            <div className="mb-6 inline-flex items-center gap-2 rounded-stellar-pill bg-brand-50 px-4 py-2 text-[13px] font-semibold text-brand-700">
+              💚 Plans for every business
+            </div>
+            <h1 className="mb-6 text-[40px] font-bold leading-[1.2] text-ink-900 sm:text-[48px] lg:text-[56px]">
+              Plans Made Simple
+            </h1>
+            <p className="mx-auto max-w-[600px] text-[16px] leading-[1.6] text-ink-500 sm:text-[18px]">
+              Pricing designed to give you maximum AI capability without breaking the bank.
+              Start free for 7 days. Upgrade or cancel anytime.
+            </p>
+            <p className="mx-auto mt-4 max-w-[600px] text-[14px] leading-[1.6] text-ink-500 sm:text-[16px]">
+              <strong className="text-ink-900">All plans include 5 languages, lead scoring, and CRM-ready data.</strong>
+            </p>
+          </div>
 
-      {/* ── PLANS ─────────────────────────────────────────────────────── */}
-      <section className="-mt-20 pb-20">
-        <div className="container">
-          <div className="grid gap-6 lg:grid-cols-2 xl:grid-cols-4">
+          {/* Pricing grid */}
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
             {PLANS.map((plan) => (
-              <article
+              <div
                 key={plan.name}
-                className={`relative flex flex-col rounded-2xl border p-7 transition ${
-                  plan.highlighted
-                    ? "border-brand-500 bg-white shadow-soft ring-1 ring-brand-500/20"
-                    : "border-ink-100 bg-white shadow-soft"
+                className={`relative rounded-[20px] border-2 bg-white p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)] sm:p-6 ${
+                  plan.primary ? "border-brand-500" : "border-ink-100"
                 }`}
               >
-                {plan.badge && (
-                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-brand-500 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-white shadow-cta">
-                    {plan.badge}
-                  </span>
-                )}
-
-                <div>
-                  <h3 className="text-[20px] font-bold text-ink-900">{plan.name}</h3>
-                  <p className="mt-1 text-[12px] font-semibold uppercase tracking-wider text-ink-400">
-                    {plan.tagline}
-                  </p>
-                </div>
-
-                <div className="mt-5">
-                  <div className="flex items-baseline gap-1">
-                    <span className="text-[40px] font-bold tracking-tight text-ink-900">
-                      {plan.price}
-                    </span>
-                    {plan.perMonth && (
-                      <span className="text-[14px] text-ink-400">{plan.perMonth}</span>
+                {/* Plan name pill */}
+                <div className="mb-6 flex min-h-[72px] items-center justify-between gap-1 rounded-[16px] bg-ink-50 px-4 py-3">
+                  <h3 className="text-[16px] font-bold text-ink-900">{plan.name}</h3>
+                  <div className="flex items-center gap-2">
+                    {plan.primary && (
+                      <span className="whitespace-nowrap rounded-stellar-pill bg-brand-500 px-2.5 py-2 text-[12px] font-semibold text-white">
+                        Best Value
+                      </span>
                     )}
+                    <div className="rounded-[15px] bg-white p-2">
+                      <GlobeIcon />
+                    </div>
                   </div>
-                  <p className="mt-3 text-[13.5px] leading-relaxed text-ink-500">
-                    {plan.description}
-                  </p>
                 </div>
 
-                <ul className="mt-6 flex-1 space-y-3">
-                  {plan.features.map((feat) => (
-                    <li key={feat} className="flex items-start gap-2.5 text-[13.5px] text-ink-700">
-                      <svg
-                        width="14"
-                        height="14"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="3"
-                        className="mt-1 shrink-0 text-brand-500"
-                        aria-hidden
-                      >
-                        <path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                      <span>{feat}</span>
-                    </li>
-                  ))}
-                </ul>
+                {/* Price */}
+                <div className="mb-6 flex items-baseline">
+                  {plan.currency && (
+                    <span className="text-[24px] font-semibold text-ink-900">{plan.currency}</span>
+                  )}
+                  <span className="mx-1 text-[32px] font-bold leading-none text-ink-900">
+                    {plan.amount}
+                  </span>
+                  {plan.currency && (
+                    <span className="text-[16px] font-normal text-ink-500">/mo</span>
+                  )}
+                </div>
+
+                <p className="mb-6 min-h-[48px] text-[14px] leading-[1.5] text-ink-500">
+                  {plan.description}
+                </p>
 
                 <Link
-                  href={plan.ctaHref}
-                  className={`mt-7 inline-flex items-center justify-center rounded-xl py-3 text-[14px] font-semibold transition-colors ${
-                    plan.highlighted
-                      ? "bg-brand-500 text-white shadow-cta hover:bg-brand-600"
-                      : plan.enterprise
-                        ? "bg-ink-900 text-white hover:bg-ink-800"
-                        : "border border-ink-200 bg-white text-ink-900 hover:bg-ink-50"
-                  }`}
+                  href={plan.name === "Enterprise" ? "mailto:hello@waintel.io" : `${APP_URL}/register`}
+                  className={`mb-6 ${plan.primary ? "btn-primary-block" : "btn-outline"}`}
                 >
                   {plan.cta}
                 </Link>
-              </article>
+
+                <ul className="m-0 list-none p-0">
+                  {plan.features.map((f) => (
+                    <li key={f} className="mb-4 flex items-start gap-3 text-[15px] leading-[1.4] last:mb-0">
+                      <span className="mt-0.5 flex-shrink-0">
+                        <CheckIcon />
+                      </span>
+                      <span className="text-ink-500">{f}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── COMPARISON BANNER ─────────────────────────────────────────── */}
-      <section className="bg-ink-50/40 py-16">
-        <div className="container">
-          <div className="rounded-2xl border border-ink-100 bg-white p-8 sm:p-12">
-            <div className="grid gap-8 lg:grid-cols-2 lg:items-center">
-              <div>
-                <span className="eyebrow">Why Waintel</span>
-                <h2 className="mt-3 text-display-md text-balance">
-                  Cheaper than hiring a junior salesperson, available 10× the hours.
-                </h2>
+      {/* ---------- WHAT YOU GET ---------- */}
+      <section className="sec-y-sp">
+        <div className="mx-auto max-w-[1200px] px-6">
+          <h2 className="home-section-title mb-12 text-center">Built to Close, Not Just Chat</h2>
+          <div className="grid grid-cols-1 gap-10 md:grid-cols-3">
+            {[
+              {
+                title: "AI that actually qualifies",
+                desc: "Goes beyond canned replies. Our agents ask the right questions, score the lead, and only forward serious buyers to your team.",
+                icon: (
+                  <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                    <path d="M18.9 37.7C12.9 35.8 7.9 31.7 4.9 26.1C1.9 20.6 1.2 14 3 8C9.2 8.3 15.3 6.1 20 2C24.7 6.1 30.8 8.3 37 8C38.4 12.6 38.3 17.5 36.8 22.1M26 34l4 4 8-8" stroke="#1D9E75" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                ),
+              },
+              {
+                title: "Zero downtime",
+                desc: "Customers don't wait. Your AI replies in under 2 seconds, 24/7. Whether you're sleeping, at lunch, or out of office.",
+                icon: (
+                  <svg width="32" height="40" viewBox="0 0 32 40" fill="none">
+                    <path d="M18 2v14h12L14 38V24H2L18 2z" stroke="#1D9E75" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                ),
+              },
+              {
+                title: "5 languages, native",
+                desc: "Urdu, Hindi, Arabic, English, Punjabi. Not translated — actually trained. Your customers feel like they're talking to a local.",
+                icon: (
+                  <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                    <path d="M3 14h33M3 26h33M19 2c-3.4 5.4-5.2 11.6-5.2 18s1.8 12.6 5.2 18M21 2c3.4 5.4 5.2 11.6 5.2 18s-1.8 12.6-5.2 18M2 20c0 9.9 8.1 18 18 18s18-8.1 18-18S29.9 2 20 2 2 10.1 2 20z" stroke="#1D9E75" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                ),
+              },
+            ].map((f) => (
+              <div key={f.title} className="rounded-stellar-card bg-ink-50 p-10 text-center">
+                <div className="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-white">
+                  {f.icon}
+                </div>
+                <h4 className="mb-3 text-[22px] font-bold text-ink-900 sm:text-[24px]">{f.title}</h4>
+                <p className="text-[15px] leading-[1.6] text-ink-500 sm:text-[16px]">{f.desc}</p>
               </div>
-              <div className="grid gap-4 sm:grid-cols-2">
-                {[
-                  { stat: "Rs. 25k+", label: "Junior salary / month in Pakistan" },
-                  { stat: "8 hrs", label: "Hours a human salesperson works / day" },
-                  { stat: "$29", label: "Waintel Starter / month" },
-                  { stat: "24 hrs", label: "Hours Waintel responds / day" },
-                ].map((s) => (
-                  <div key={s.label} className="rounded-xl bg-ink-50 p-4">
-                    <div className="text-[22px] font-bold text-ink-900">{s.stat}</div>
-                    <div className="mt-1 text-[13px] text-ink-500">{s.label}</div>
-                  </div>
-                ))}
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ---------- FAQ ---------- */}
+      <PricingFAQ />
+
+      {/* ---------- FINAL CTA ---------- */}
+      <section className="sec-y-sp">
+        <div className="mx-auto max-w-[1200px] px-6">
+          <div className="overflow-hidden rounded-stellar-card bg-brand-500 px-8 pt-12 pb-0 text-white sm:px-16 sm:pt-14 lg:px-20">
+            <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-20">
+              <div>
+                <h2 className="mb-6 text-[32px] font-bold leading-[1.2] text-white sm:text-[40px] lg:text-[44px]">
+                  Ready to turn WhatsApp into your best salesperson?
+                </h2>
+                <p className="mb-8 text-[16px] leading-[1.6] text-white/90 sm:text-[18px]">
+                  Waintel gives you the AI, the templates, and the playbook — starting today.
+                  200 free messages, no card required.
+                </p>
+                <Link
+                  href={`${APP_URL}/register`}
+                  className="inline-flex items-center gap-2 rounded-stellar-pill border-2 border-white bg-transparent px-8 py-4 text-[16px] font-semibold text-white transition-all hover:bg-white hover:text-brand-500"
+                >
+                  Start free trial
+                  <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+                    <path d="M6.5 10.5L9.5 7.5L6.5 4.5" stroke="currentColor" strokeWidth="2" strokeLinecap="square" />
+                  </svg>
+                </Link>
+              </div>
+              <div className="hidden h-full items-end lg:flex">
+                {/* CSS-only hero illustration: a friendly chat bubble */}
+                <div className="ml-auto flex h-[280px] w-[280px] items-center justify-center">
+                  <svg viewBox="0 0 240 240" className="h-full w-full opacity-95">
+                    <circle cx="120" cy="120" r="110" fill="rgba(255,255,255,0.1)" />
+                    <circle cx="120" cy="120" r="80" fill="rgba(255,255,255,0.18)" />
+                    <g transform="translate(60 60)">
+                      <rect width="120" height="100" rx="20" fill="white" />
+                      <path d="M40 100l10 20 18-20z" fill="white" />
+                      <rect x="20" y="22" width="80" height="8" rx="4" fill="#1D9E75" />
+                      <rect x="20" y="40" width="60" height="8" rx="4" fill="#7BE5BF" />
+                      <rect x="20" y="58" width="70" height="8" rx="4" fill="#7BE5BF" />
+                    </g>
+                  </svg>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
-
-      {/* ── FAQ ────────────────────────────────────────────────────────── */}
-      <section className="section bg-white">
-        <div className="container max-w-4xl">
-          <div className="mx-auto max-w-3xl text-center">
-            <span className="eyebrow">Frequently asked</span>
-            <h2 className="mt-4 text-display-lg text-balance">Pricing questions answered</h2>
-          </div>
-
-          <div className="mt-12 space-y-4">
-            {FAQ.map((item) => (
-              <details
-                key={item.q}
-                className="group rounded-xl border border-ink-100 bg-white p-6 transition open:bg-ink-50/40"
-              >
-                <summary className="flex cursor-pointer items-center justify-between gap-4 text-[16px] font-semibold text-ink-900">
-                  {item.q}
-                  <svg
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2.5"
-                    className="shrink-0 text-ink-400 transition-transform group-open:rotate-180"
-                    aria-hidden
-                  >
-                    <path d="M6 9l6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </summary>
-                <p className="mt-4 text-[15px] leading-relaxed text-ink-600">{item.a}</p>
-              </details>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── CTA ────────────────────────────────────────────────────────── */}
-      <section className="bg-ink-50/40 py-20">
-        <div className="container max-w-2xl text-center">
-          <h2 className="text-display-md text-balance">Ready to never miss a customer message again?</h2>
-          <p className="mx-auto mt-4 max-w-md text-[16px] text-ink-500">
-            7 days free. No credit card. Live in minutes.
-          </p>
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-            <Link href="/signup" className="btn-primary">Start free trial</Link>
-            <Link href="/contact" className="btn-secondary">Talk to sales</Link>
-          </div>
-        </div>
-      </section>
-    </>
+    </div>
   );
 }
