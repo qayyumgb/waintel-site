@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "Waintel.ai — WhatsApp AI Agents that close sales for your business";
+export const alt = "Waintel.ai — The WhatsApp Ghost Employee for your business";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -52,7 +52,7 @@ export default async function OpengraphImage() {
                 color: "rgba(255,255,255,0.7)",
               }}
             >
-              WhatsApp AI Agent
+              WhatsApp Ghost Employee
             </div>
           </div>
         </div>
@@ -68,8 +68,8 @@ export default async function OpengraphImage() {
               maxWidth: 900,
             }}
           >
-            Turn WhatsApp into your{" "}
-            <span style={{ color: "#a7f3d0" }}>best salesperson.</span>
+            Hire your{" "}
+            <span style={{ color: "#a7f3d0" }}>WhatsApp Ghost Employee.</span>
           </div>
           <div
             style={{
@@ -94,7 +94,7 @@ export default async function OpengraphImage() {
           }}
         >
           <div style={{ fontSize: 18, color: "rgba(255,255,255,0.7)" }}>
-            🇵🇰 Built for Pakistan & MENA
+            Multilingual · Multi-channel · Global
           </div>
           <div
             style={{

@@ -9,7 +9,7 @@ const NAV_LINKS = [
   { href: "/features", label: "Features" },
   { href: "/industries", label: "Industries" },
   { href: "/pricing", label: "Pricing" },
-  { href: "/api-docs", label: "API Docs" },
+  { href: "/agency", label: "Agency" },
 ];
 
 export function Header() {

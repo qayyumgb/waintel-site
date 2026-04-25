@@ -1,19 +1,25 @@
 import type { Metadata } from "next";
 
-// Hardcoded for now — change to waintel.io / waintel.ai when domain is registered
+// Hardcoded for now — change to waintel.ai when domain is registered
 export const SITE_URL = "https://waintel.io";
 export const SITE_NAME = "Waintel.ai";
-export const SITE_TAGLINE = "WhatsApp AI Agents that close sales for your business";
+export const SITE_TAGLINE = "The WhatsApp Ghost Employee for your business";
 export const SITE_DESCRIPTION =
-  "Waintel turns WhatsApp into your best salesperson. AI-powered agents qualify leads, take orders, book appointments, and recover lost sales — 24/7 in Urdu, English, and your customers' language. Built for Pakistan and MENA businesses.";
+  "Your WhatsApp Ghost Employee answers customers 24/7, takes orders, qualifies leads, books appointments, and follows up on missed sales — automatically. Multilingual, multi-channel, and live in 10 minutes.";
 
 export const APP_URL = "https://app.waintel.io";
 
+// Placeholder WhatsApp number — REPLACE with real number before launch
+export const WA_NUMBER = "10000000000";
+export const WA_LINK = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(
+  "Hi Waintel, I want to know more about my Ghost Employee."
+)}`;
+
 interface PageSEOInput {
-  title?: string;          // Page title (no need to append site name)
+  title?: string;
   description?: string;
-  path?: string;           // e.g. "/pricing"
-  ogImage?: string;        // path or absolute URL
+  path?: string;
+  ogImage?: string;
   noindex?: boolean;
 }
 
@@ -48,7 +54,6 @@ export function pageMetadata({ title, description, path = "/", ogImage, noindex 
   };
 }
 
-// Structured data for SEO — tells Google we're a SaaS, not a blog
 export const ORGANIZATION_JSON_LD = {
   "@context": "https://schema.org",
   "@type": "Organization",
@@ -56,12 +61,11 @@ export const ORGANIZATION_JSON_LD = {
   url: SITE_URL,
   logo: `${SITE_URL}/logo.png`,
   description: SITE_DESCRIPTION,
-  sameAs: [],
   contactPoint: {
     "@type": "ContactPoint",
     contactType: "customer support",
-    email: "support@waintel.io",
-    availableLanguage: ["English", "Urdu"],
+    email: "support@waintel.ai",
+    availableLanguage: ["English", "Arabic", "Spanish", "French"],
   },
 };
 

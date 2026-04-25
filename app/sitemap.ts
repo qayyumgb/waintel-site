@@ -11,11 +11,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
   return [
-    { url: `${SITE_URL}/`,            lastModified: now, changeFrequency: "weekly",  priority: 1.0 },
-    { url: `${SITE_URL}/pricing`,     lastModified: now, changeFrequency: "monthly", priority: 0.9 },
-    { url: `${SITE_URL}/features`,    lastModified: now, changeFrequency: "monthly", priority: 0.85 },
-    { url: `${SITE_URL}/industries`,  lastModified: now, changeFrequency: "monthly", priority: 0.85 },
+    { url: `${SITE_URL}/`,           lastModified: now, changeFrequency: "weekly",  priority: 1.0 },
+    { url: `${SITE_URL}/pricing`,    lastModified: now, changeFrequency: "monthly", priority: 0.95 },
+    { url: `${SITE_URL}/features`,   lastModified: now, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${SITE_URL}/industries`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
     ...industryRoutes,
-    { url: `${SITE_URL}/api-docs`,    lastModified: now, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${SITE_URL}/agency`,     lastModified: now, changeFrequency: "monthly", priority: 0.85 },
+    { url: `${SITE_URL}/about`,      lastModified: now, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${SITE_URL}/contact`,    lastModified: now, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${SITE_URL}/api-docs`,   lastModified: now, changeFrequency: "monthly", priority: 0.7 },
   ];
 }

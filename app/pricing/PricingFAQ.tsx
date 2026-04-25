@@ -4,36 +4,36 @@ import { useState } from "react";
 
 const FAQS = [
   {
-    q: "Is there really a free trial?",
-    a: "Yes — 7 days free, with 200 AI messages on us. No credit card needed to start. Upgrade only if you love it.",
+    q: "Do I need a credit card for the 14-day trial?",
+    a: "No. Just an email and a WhatsApp number — no card, no commitment. If the trial ends, your bot pauses; you're never auto-charged.",
   },
   {
-    q: "What happens after I hit my message limit?",
-    a: "Your AI keeps replying — we just bill overage at $0.02 per extra message, billed monthly. No service interruption, no surprises.",
+    q: "What happens if I hit my conversation limit?",
+    a: "Your bot pauses. Upgrade or wait for next month — no surprise overage charges, ever.",
   },
   {
-    q: "Do I need a Meta WhatsApp Business API account?",
-    a: "Not required. You can connect any WhatsApp number via QR code (Baileys), or use the official Meta Cloud API if you have approval. Both work out of the box.",
+    q: "What payment methods can my customers use?",
+    a: "Stripe (cards globally) is built in. COD is supported. Regional payment methods can be configured per merchant on Business and Agency tiers.",
   },
   {
-    q: "Can I cancel anytime?",
-    a: "Yes. Cancel from your dashboard in one click. Your subscription stays active until the end of the current billing cycle — no questions asked.",
+    q: "How long does Meta approval take?",
+    a: "Typically 2-7 business days. Our in-app wizard walks you through setup. If you don't want to wait, you can connect any WhatsApp number via Baileys QR-code — no Meta approval needed.",
   },
   {
-    q: "What languages does the AI actually speak?",
-    a: "Urdu, Hindi, Arabic, English, and Punjabi — natively trained, not translated. The AI auto-detects what your customer writes in and replies in the same language.",
+    q: "Can I add my own knowledge base?",
+    a: "Yes. Upload PDFs, docs, or a website URL. The bot ingests them and replies in your tone, with your information.",
   },
   {
-    q: "Will it work with my CRM?",
-    a: "Business and Agency plans include integrations with HubSpot, Pipedrive, Zoho, Salesforce, and Google Sheets. Enterprise gets custom integrations.",
+    q: "What languages does the Ghost Employee speak?",
+    a: "Multiple languages out of the box — natively, not translated. The bot auto-detects each customer's language and replies in the same one. Voice notes too.",
   },
   {
-    q: "What payment methods do you accept?",
-    a: "Stripe (cards) globally, plus local payment methods in Pakistan and MENA on request. Annual plans get a 20% discount.",
+    q: "Will my clients see Waintel branding on the Agency plan?",
+    a: "No. Your logo, your brand, your custom domain. Waintel is completely hidden — clients only see your platform.",
   },
   {
-    q: "Is my customer data safe?",
-    a: "All conversations are encrypted at rest and in transit. We're GDPR-aware and SOC 2 ready. We never use your data to train other models.",
+    q: "What's the refund policy?",
+    a: "After the 14-day trial, the first paid month comes with a 7-day refund guarantee. Cancel anytime from the dashboard — no questions asked.",
   },
 ];
 

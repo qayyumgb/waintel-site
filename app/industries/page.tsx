@@ -5,7 +5,7 @@ import { INDUSTRIES } from "./[slug]/industries";
 export const metadata = pageMetadata({
   title: "Industries",
   description:
-    "Waintel WhatsApp AI Agent for Real Estate, Healthcare, E-commerce, Education, and Hotels. Industry-trained agents that understand your customers and your sales cycle.",
+    "Your Ghost Employee, pre-trained for your industry: Restaurant, Real Estate, Hotels, Healthcare, Education, and E-commerce. Multilingual, voice-note ready, payment-in-chat — live in 10 minutes.",
   path: "/industries",
 });
 
@@ -24,15 +24,16 @@ export default function IndustriesIndexPage() {
         <div className="mx-auto max-w-[1300px] px-6 py-16 sm:py-24">
           <div className="mx-auto max-w-[820px] text-center">
             <h1 className="mb-5 text-[34px] font-bold leading-[1.1] text-white sm:text-[44px] lg:text-[56px]">
-              Built for the way <span className="text-brand-highlight">you sell.</span>
+              Your industry. <span className="text-brand-highlight">Pre-configured.</span>
             </h1>
             <p className="mx-auto max-w-[640px] text-[15px] leading-[1.6] text-white/95 sm:text-[17px]">
-              Waintel ships pre-trained for five core industries. Each one understands the
-              vocabulary, the objections, and the sales cycle of that vertical.
+              Don't build from scratch. Pick your industry and your Ghost Employee
+              is ready in 10 minutes — payment-in-chat, voice notes ready,
+              multilingual out of the box.
             </p>
             <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
               <Link href={`${APP_URL}/register`} className="btn-dark">
-                Start your free trial
+                Start free trial — 10 min setup
                 <ArrowRight />
               </Link>
               <Link href="/pricing" className="btn-ghost-light">

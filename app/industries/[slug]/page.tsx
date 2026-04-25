@@ -1,8 +1,9 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { APP_URL, pageMetadata, SITE_URL, SITE_NAME } from "@/lib/seo";
+import { APP_URL, pageMetadata, SITE_URL } from "@/lib/seo";
 import { INDUSTRIES } from "./industries";
+import { WhatsAppConversation } from "@/components/WhatsAppConversation";
 
 const ArrowRight = () => (
   <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
@@ -25,7 +26,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const ind = INDUSTRIES[slug];
   if (!ind) return pageMetadata({ noindex: true });
   return pageMetadata({
-    title: `WhatsApp AI for ${ind.name}`,
+    title: `WhatsApp Ghost Employee for ${ind.name}`,
     description: `Waintel for ${ind.name}: ${ind.hero.description}`,
     path: `/industries/${slug}`,
   });
@@ -38,7 +39,6 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
 
   return (
     <div>
-      {/* JSON-LD: BreadcrumbList + FAQ for rich results */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -76,26 +76,36 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
             <span className="text-white">{ind.name}</span>
           </div>
 
-          <div className="max-w-[760px]">
-            <div className="mb-5 inline-flex items-center gap-2 rounded-stellar-pill bg-white/10 px-4 py-1.5 text-[13px] font-semibold text-white backdrop-blur-sm">
-              <ind.Icon size={14} />
-              <span>{ind.hero.eyebrow}</span>
+          <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-[1.05fr_1fr] lg:gap-14">
+            <div>
+              <div className="mb-5 inline-flex items-center gap-2 rounded-stellar-pill bg-white/10 px-4 py-1.5 text-[13px] font-semibold text-white backdrop-blur-sm">
+                <ind.Icon size={14} />
+                <span>{ind.hero.eyebrow}</span>
+              </div>
+              <h1 className="mb-5 text-[32px] font-bold leading-[1.1] text-white sm:text-[40px] lg:text-[52px]">
+                {ind.hero.title}<br />
+                <span className="text-brand-highlight">{ind.hero.titleHighlight}</span>
+              </h1>
+              <p className="mb-6 max-w-[600px] text-[15px] leading-[1.6] text-white/95 sm:text-[17px]">
+                {ind.hero.description}
+              </p>
+              <div className="flex flex-wrap items-center gap-3">
+                <Link href={`${APP_URL}/register`} className="btn-dark">
+                  Start free trial — 10 min setup
+                  <ArrowRight />
+                </Link>
+                <Link href="/pricing" className="btn-ghost-light">
+                  See pricing
+                </Link>
+              </div>
             </div>
-            <h1 className="mb-5 text-[34px] font-bold leading-[1.1] text-white sm:text-[44px] lg:text-[56px]">
-              {ind.hero.title}<br />
-              <span className="text-brand-highlight">{ind.hero.titleHighlight}</span>
-            </h1>
-            <p className="mb-6 max-w-[680px] text-[15px] leading-[1.6] text-white/95 sm:text-[17px]">
-              {ind.hero.description}
-            </p>
-            <div className="flex flex-wrap items-center gap-4">
-              <Link href={`${APP_URL}/register`} className="btn-dark">
-                Start your free trial
-                <ArrowRight />
-              </Link>
-              <Link href="/pricing" className="btn-ghost-light">
-                See pricing
-              </Link>
+
+            <div className="flex justify-center lg:justify-end">
+              <WhatsAppConversation
+                businessName={ind.conversation.businessName}
+                businessSubtitle={ind.conversation.businessSubtitle}
+                messages={ind.conversation.messages}
+              />
             </div>
           </div>
         </div>
@@ -114,7 +124,7 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
                   <div className="mb-3 inline-flex h-8 w-8 items-center justify-center rounded-full bg-brand-500 text-[14px] font-bold text-white">
                     {i + 1}
                   </div>
-                  <h3 className="mb-2 text-[17px] font-bold text-ink-900">{p.title}</h3>
+                  <h3 className="mb-2 text-[17px] font-bold text-ink-900">"{p.title}"</h3>
                   <p className="m-0 text-[14px] leading-[1.5] text-ink-500">{p.desc}</p>
                 </div>
               ))}
@@ -127,7 +137,7 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
       <section className="bg-ink-50 sec-bottom-sp pt-12">
         <div className="mx-auto max-w-[1300px] px-6">
           <div className="mb-12 text-center">
-            <h2 className="home-section-title">What Waintel does for you</h2>
+            <h2 className="home-section-title">What your Ghost Employee does</h2>
             <p className="mx-auto mt-4 max-w-2xl text-[16px] leading-[1.6] text-ink-500 sm:text-[18px]">
               Built for {ind.name.toLowerCase()} from day one — not a generic chatbot dressed up.
             </p>
@@ -148,57 +158,21 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
         </div>
       </section>
 
-      {/* CONVERSATION SAMPLE */}
+      {/* PROOF / ROI metrics */}
       <section className="bg-ink-50 sec-bottom-sp">
         <div className="mx-auto max-w-[1300px] px-6">
-          <div className="overflow-hidden rounded-stellar-card bg-white">
-            <div className="grid grid-cols-1 gap-0 lg:grid-cols-2">
-              <div className="p-8 sm:p-12 lg:p-16">
-                <div className="mb-5 inline-flex items-center gap-2 rounded-stellar-pill bg-brand-50 px-4 py-1.5 text-[12px] font-semibold uppercase tracking-wider text-brand-700">
-                  Real conversation
+          <div className="rounded-stellar-card bg-ink-900 p-8 text-center text-white sm:p-12 lg:p-16">
+            <h2 className="mb-3 text-[28px] font-bold leading-[1.2] text-white sm:text-[32px] lg:text-[36px]">
+              The numbers from real {ind.name.toLowerCase()} customers.
+            </h2>
+            <p className="mb-10 text-[16px] text-white/70 sm:text-[18px]">{ind.roi}</p>
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+              {ind.proof.map((m) => (
+                <div key={m.label}>
+                  <div className="mb-2 text-[40px] font-bold text-brand-highlight sm:text-[48px]">{m.metric}</div>
+                  <p className="m-0 text-[14px] leading-[1.6] text-white/80 sm:text-[15px]">{m.label}</p>
                 </div>
-                <h2 className="mb-4 text-[28px] font-bold leading-[1.2] text-ink-900 sm:text-[32px] lg:text-[36px]">
-                  This is how Waintel handles a real {ind.name.toLowerCase()} inquiry.
-                </h2>
-                <p className="mb-6 text-[15px] leading-[1.6] text-ink-500 sm:text-[16px]">
-                  Industry-trained, multilingual, structured output. The customer feels
-                  like they're talking to your best salesperson — because they are.
-                </p>
-                <div className="space-y-3">
-                  {ind.proof.map((p) => (
-                    <div key={p.label} className="flex items-baseline gap-3">
-                      <span className="min-w-[80px] text-[24px] font-bold text-brand-500 sm:text-[28px]">{p.metric}</span>
-                      <span className="text-[14px] text-ink-500">{p.label}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div className="flex items-center justify-center bg-ink-50 p-6 sm:p-10 lg:p-12">
-                <div className="w-full max-w-[420px] overflow-hidden rounded-[24px] bg-white shadow-soft">
-                  <div className="flex items-center gap-3 border-b border-ink-100 bg-white px-5 py-4">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-500 text-white font-bold">W</div>
-                    <div className="flex-1">
-                      <div className="text-[14px] font-semibold text-ink-900">Waintel AI · {ind.name}</div>
-                      <div className="text-[11px] text-brand-500">● Online</div>
-                    </div>
-                  </div>
-                  <div className="space-y-3 bg-ink-50 p-5">
-                    {ind.conversation.map((m, i) => (
-                      <div
-                        key={i}
-                        className={
-                          m.side === "in"
-                            ? "max-w-[85%] whitespace-pre-line rounded-[14px] rounded-bl-[4px] bg-white px-4 py-2.5 text-[13px] leading-[1.4] text-ink-900 shadow-sm"
-                            : "ml-auto max-w-[85%] whitespace-pre-line rounded-[14px] rounded-br-[4px] bg-brand-500 px-4 py-2.5 text-[13px] leading-[1.4] text-white"
-                        }
-                      >
-                        {m.text}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>
@@ -211,7 +185,7 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
             <div>
               <h2 className="home-section-title mb-4">Frequently asked</h2>
               <p className="text-[16px] leading-[1.6] text-ink-500 sm:text-[18px]">
-                {ind.name}-specific answers. Need more? <a href="mailto:hello@waintel.io" className="text-brand-500 underline">Email us</a>.
+                {ind.name}-specific answers. Need more? <a href="mailto:hello@waintel.ai" className="text-brand-500 underline">Email us</a>.
               </p>
             </div>
             <div>
@@ -243,10 +217,10 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
         <div className="mx-auto max-w-[1300px] px-6">
           <div className="overflow-hidden rounded-stellar-card bg-brand-500 px-6 py-12 text-center text-white sm:px-20 sm:py-16">
             <h2 className="mb-4 text-[32px] font-bold leading-[1.2] text-white sm:text-[40px] lg:text-[44px]">
-              Ready to close more {ind.name.toLowerCase()} deals on WhatsApp?
+              Ready to hire your {ind.name} Ghost Employee?
             </h2>
             <p className="mx-auto mb-8 max-w-2xl text-[16px] leading-[1.6] text-white/90 sm:text-[18px]">
-              200 free messages, no card required. Live in 10 minutes.
+              14-day free trial. No card required. Live in 10 minutes.
             </p>
             <Link
               href={`${APP_URL}/register`}
@@ -261,5 +235,3 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
     </div>
   );
 }
-
-void SITE_NAME;
