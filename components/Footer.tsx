@@ -3,18 +3,18 @@ import { Logo } from "./Logo";
 import { APP_URL } from "@/lib/seo";
 
 const PRODUCT_LINKS = [
-  { label: "Features", href: "/#features" },
+  { label: "Features", href: "/features" },
   { label: "Pricing", href: "/pricing" },
-  { label: "How it works", href: "/#how-it-works" },
-  { label: "Integrations", href: "/#integrations" },
+  { label: "API & Webhooks", href: "/api-docs" },
+  { label: "Industries", href: "/industries" },
 ];
 
 const INDUSTRY_LINKS = [
-  { label: "Real Estate", href: "/#industries" },
-  { label: "Healthcare", href: "/#industries" },
-  { label: "E-commerce", href: "/#industries" },
-  { label: "Education", href: "/#industries" },
-  { label: "Hotels", href: "/#industries" },
+  { label: "Real Estate", href: "/industries/real-estate" },
+  { label: "Healthcare", href: "/industries/healthcare" },
+  { label: "E-commerce", href: "/industries/ecommerce" },
+  { label: "Education", href: "/industries/education" },
+  { label: "Hotels", href: "/industries/hotels" },
 ];
 
 const COMPANY_LINKS = [

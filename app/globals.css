@@ -146,3 +146,52 @@
 .faq-answer.open { max-height: 500px; }
 .faq-toggle { transition: transform 0.3s ease; }
 .faq-toggle.open { transform: rotate(180deg); }
+
+/* ----- Markdown docs typography (used by /api-docs) ----- */
+.prose-docs { color: #0B1319; line-height: 1.7; font-size: 15px; }
+.prose-docs h1 { font-size: 36px; font-weight: 700; margin: 0 0 16px; line-height: 1.2; color: #0B1319; }
+.prose-docs h2 { font-size: 28px; font-weight: 700; margin: 48px 0 16px; line-height: 1.3; color: #0B1319; scroll-margin-top: 100px; padding-bottom: 12px; border-bottom: 1px solid #EAEAF0; }
+.prose-docs h3 { font-size: 20px; font-weight: 700; margin: 32px 0 12px; line-height: 1.4; color: #0B1319; scroll-margin-top: 100px; }
+.prose-docs h4 { font-size: 17px; font-weight: 600; margin: 24px 0 10px; color: #0B1319; }
+.prose-docs p  { margin: 0 0 16px; color: #62626A; }
+.prose-docs strong { color: #0B1319; font-weight: 600; }
+.prose-docs a  { color: #1D9E75; text-decoration: underline; text-underline-offset: 3px; }
+.prose-docs a:hover { color: #0F6E56; }
+.prose-docs ul, .prose-docs ol { margin: 0 0 16px; padding-left: 24px; color: #62626A; }
+.prose-docs li { margin-bottom: 6px; }
+.prose-docs li > p { margin-bottom: 4px; }
+.prose-docs hr { margin: 32px 0; border: 0; border-top: 1px solid #EAEAF0; }
+.prose-docs blockquote { margin: 16px 0; padding: 12px 20px; border-left: 4px solid #1D9E75; background: #F6F6FD; border-radius: 0 12px 12px 0; color: #62626A; }
+.prose-docs blockquote p { margin: 0; }
+
+/* Inline code */
+.prose-docs :not(pre) > code {
+  background: #F6F6FD;
+  color: #0F6E56;
+  padding: 2px 6px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  border: 1px solid #EAEAF0;
+}
+
+/* Code blocks */
+.prose-docs pre {
+  background: #0B1319;
+  color: #e7eef5;
+  padding: 18px 20px;
+  border-radius: 16px;
+  margin: 16px 0 24px;
+  overflow-x: auto;
+  font-size: 13px;
+  line-height: 1.55;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+.prose-docs pre code { background: transparent; color: inherit; padding: 0; border: 0; font-size: inherit; }
+
+/* Tables */
+.prose-docs table { width: 100%; border-collapse: collapse; margin: 16px 0 24px; font-size: 14px; }
+.prose-docs thead { background: #F6F6FD; }
+.prose-docs th, .prose-docs td { padding: 10px 14px; text-align: left; border-bottom: 1px solid #EAEAF0; }
+.prose-docs th { font-weight: 600; color: #0B1319; }
+.prose-docs td { color: #62626A; }

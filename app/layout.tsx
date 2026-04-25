@@ -34,7 +34,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           }}
         />
       </head>
-      <body className="min-h-screen flex flex-col bg-white">
+      <body className="min-h-screen flex flex-col bg-white" suppressHydrationWarning>
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />

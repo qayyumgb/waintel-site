@@ -6,10 +6,10 @@ import { Logo } from "./Logo";
 import { APP_URL } from "@/lib/seo";
 
 const NAV_LINKS = [
-  { href: "/#features", label: "Features" },
-  { href: "/#industries", label: "Industries" },
+  { href: "/features", label: "Features" },
+  { href: "/industries", label: "Industries" },
   { href: "/pricing", label: "Pricing" },
-  { href: "/#how-it-works", label: "How it works" },
+  { href: "/api-docs", label: "API Docs" },
 ];
 
 export function Header() {
