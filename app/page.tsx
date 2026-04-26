@@ -88,60 +88,102 @@ export default function HomePage() {
   return (
     <div>
       {/* ====================================================================
-          HERO  — full-bleed dark gradient (matches Stellar hero-banner)
+          HERO  — Stellar hero-banner structure with Waintel content.
+          HTML structure + CSS classes are 1:1 with Stellar's
+          home.component.html / home.component.css. Only the text, SVG icons,
+          and image differ. CSS lives in globals.css under "STELLAR HERO".
       ===================================================================== */}
-      <section className="hero-bg relative -mt-[76px] overflow-hidden pt-[76px]">
-        <div className="mx-auto max-w-[1300px] px-6 pb-12 pt-12 sm:pb-20 sm:pt-20">
-          <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-[1.05fr_1fr] lg:gap-16">
-            <div>
-              <div className="mb-5 inline-flex items-center gap-2 rounded-stellar-pill bg-white/10 px-4 py-1.5 text-[13px] font-semibold text-white backdrop-blur-sm">
-                <ShieldIcon size={14} />
-                <span>The Ghost Employee for your business</span>
+      <section className="hero-banner">
+        <div className="hero-banner-bg">
+          <div className="hero-bg-image"></div>
+        </div>
+
+        <div className="container">
+          <div className="hero-content">
+            {/* Top Badge */}
+            <div className="privacy-badge">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8 1L2 3.5V7.25C2 10.9625 4.56 14.4425 8 15.25C11.44 14.4425 14 10.9625 14 7.25V3.5L8 1Z"
+                  stroke="white" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M5.5 8L7.25 9.75L10.75 6.25" stroke="white" strokeWidth="1.2" strokeLinecap="round"
+                  strokeLinejoin="round" />
+              </svg>
+              <span>The Ghost Employee for your business</span>
+            </div>
+
+            {/* Divider Line */}
+            <div className="hero-divider"></div>
+
+            {/* Main Heading — Waintel two-line, second line highlighted */}
+            <h1 className="hero-title">
+              <span className="hero-title-white">Hire a Ghost Employee.</span>
+              <span className="hero-title-line"><span className="hero-title-highlight">Close customers 24/7.</span></span>
+            </h1>
+
+            {/* Description */}
+            <p className="hero-description">
+              Waintel answers customers, takes orders, qualifies leads, books appointments,
+              and follows up on missed sales — automatically. <strong>While you sleep.</strong>
+            </p>
+
+            {/* CTA Buttons */}
+            <div className="hero-buttons">
+              <a href={`${APP_URL}/register`} className="btn-stellar-id">
+                Start free trial — 10 min setup
+                <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M6.5 10.5L9.5 7.5L6.5 4.5" stroke="white" strokeWidth="2" strokeLinecap="square" />
+                </svg>
+              </a>
+              <a href="#how-it-works" className="btn-explore">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+                Watch 3-min demo
+              </a>
+            </div>
+
+            {/* Feature Badges — 4 Waintel value props with white outline icons */}
+            <div className="hero-features">
+              <div className="feature-item">
+                {/* Shield — 14-day free trial */}
+                <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M0.5 4.5L7.5 0.5L14.5 4.5V5.21989C14.5 9.52908 11.6434 13.3162 7.5 14.5C3.35661 13.3162 0.5 9.52908 0.5 5.21989V4.5Z"
+                    stroke="white" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+                <span>14-day free trial</span>
               </div>
-
-              <h1 className="mb-5 text-[32px] font-bold leading-[1.1] text-white sm:text-[40px] lg:text-[52px]">
-                Hire a Ghost Employee.{" "}
-                <span className="text-brand-highlight">Close customers on WhatsApp 24/7.</span>
-              </h1>
-
-              <p className="mb-7 max-w-[560px] text-[15px] leading-[1.6] text-white/95 sm:text-[17px]">
-                Waintel answers customers, takes orders, qualifies leads, books
-                appointments, and follows up on missed sales — automatically.
-                <strong> While you sleep.</strong>
-              </p>
-
-              <div className="mb-7 flex flex-wrap items-center gap-3">
-                <Link href={`${APP_URL}/register`} className="btn-dark">
-                  Start free trial — 10 min setup
-                  <ArrowRight />
-                </Link>
-                <Link href="#how-it-works" className="btn-ghost-light">
-                  <PlayIcon />
-                  Watch 3-min demo
-                </Link>
+              <div className="feature-item">
+                {/* Key — No card required */}
+                <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="5" cy="9.5" r="2.5" stroke="white" />
+                  <path d="M6.8 7.7L13.5 1M11 3.5L13 5.5" stroke="white" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+                <span>No card required</span>
               </div>
-
-              <div className="flex flex-wrap items-center gap-2.5">
-                {[
-                  { Icon: ShieldIcon, label: "14-day free trial" },
-                  { Icon: KeyIcon, label: "No card required" },
-                  { Icon: ZapSmallIcon, label: "10-min setup" },
-                  { Icon: PlugSmallIcon, label: "Stripe + cards" },
-                ].map((f) => (
-                  <div key={f.label} className="feature-pill-light">
-                    <f.Icon size={15} />
-                    <span>{f.label}</span>
-                  </div>
-                ))}
+              <div className="feature-item">
+                {/* Lightning — 10-min setup */}
+                <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M8 1L2.5 8.5H7L7 14L12.5 6.5H8L8 1Z" stroke="white" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+                <span>10-min setup</span>
+              </div>
+              <div className="feature-item">
+                {/* Card — Stripe + cards */}
+                <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="1" y="3" width="13" height="9" rx="1.5" stroke="white" />
+                  <path d="M1 6.5H14M3.5 9.5H5.5" stroke="white" strokeLinecap="round" />
+                </svg>
+                <span>Stripe + cards</span>
               </div>
             </div>
 
-            <div className="flex justify-center lg:justify-end">
-              <WhatsAppConversation
-                businessName="Bella's Bistro"
-                businessSubtitle="online · Ghost Employee active"
-                messages={HERO_CHAT}
-              />
+            {/* Region / trust badge — replaces Stellar's Swiss Privacy badge */}
+            <div className="swiss-badge">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10 18.5C12 16 17 12 17 8a7 7 0 1 0-14 0c0 4 5 8 7 10.5z" stroke="#1D9E75" strokeWidth="1.5" strokeLinejoin="round" />
+                <circle cx="10" cy="8" r="2.5" stroke="#1D9E75" strokeWidth="1.5" />
+              </svg>
+              <span>Multilingual · Multi-channel · Global</span>
             </div>
           </div>
         </div>
@@ -563,6 +605,257 @@ export default function HomePage() {
         </div>
       </section>
     </div>
+  );
+}
+
+/* ============================================================
+   <HeroDeviceMockup />
+   MacBook + iPhone composition. The laptop screen renders a
+   miniature Waintel dashboard; the phone in front shows a live
+   WhatsApp conversation. All pure CSS/SVG — no stock photos.
+============================================================ */
+function HeroDeviceMockup({ messages }: { messages: WAMessage[] }) {
+  return (
+    <div className="relative w-full max-w-[560px]">
+      {/* Soft halo behind the devices */}
+      <div
+        aria-hidden
+        className="absolute inset-0 -z-10 blur-3xl"
+        style={{
+          background:
+            "radial-gradient(60% 60% at 70% 50%, rgba(123,229,191,0.35) 0%, transparent 70%)",
+        }}
+      />
+
+      <MacLaptop>
+        <DashboardPreview />
+      </MacLaptop>
+
+      {/* Floating phone — overlaps bottom-left of the laptop */}
+      <div className="absolute -bottom-8 -left-2 w-[180px] sm:-left-4 sm:w-[210px] lg:-left-6 lg:w-[230px]">
+        <div
+          className="overflow-hidden rounded-[28px] border-[6px] border-[#0B1319] bg-[#0B1319]"
+          style={{ filter: "drop-shadow(0 30px 60px rgba(11,19,25,0.35))" }}
+        >
+          {/* Mini phone notch */}
+          <div className="relative h-3 bg-[#0B1319]">
+            <div className="absolute left-1/2 top-0 h-2.5 w-16 -translate-x-1/2 rounded-b-[10px] bg-[#0B1319]" />
+          </div>
+          <div className="h-[360px] overflow-hidden bg-white sm:h-[400px] lg:h-[440px]">
+            <WhatsAppConversation
+              businessName="Bella's Bistro"
+              businessSubtitle="online · Ghost Employee"
+              messages={messages}
+              showFrame={false}
+            />
+          </div>
+          <div className="flex justify-center bg-[#0B1319] py-1.5">
+            <div className="h-0.5 w-16 rounded-full bg-white/80" />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function MacLaptop({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="relative">
+      {/* Screen + bezel */}
+      <div
+        className="relative overflow-hidden rounded-[14px] bg-[#0B1319] p-[6px] sm:p-[8px]"
+        style={{ boxShadow: "0 24px 60px rgba(11,19,25,0.35)" }}
+      >
+        {/* Top bezel with camera dot */}
+        <div className="absolute left-1/2 top-[6px] sm:top-[8px] h-[6px] -translate-x-1/2 sm:h-[8px]" />
+
+        <div className="relative aspect-[16/10] w-full overflow-hidden rounded-[8px] bg-white">
+          {/* Camera dot */}
+          <div className="absolute left-1/2 top-[3px] z-10 h-1 w-1 -translate-x-1/2 rounded-full bg-[#444]" />
+          {children}
+        </div>
+      </div>
+
+      {/* Base / hinge */}
+      <div
+        className="relative -mt-[1px] h-[12px] rounded-b-[14px] sm:h-[14px]"
+        style={{
+          background: "linear-gradient(to bottom, #c5c8ce 0%, #9ea3ad 60%, #7d828c 100%)",
+          width: "112%",
+          marginLeft: "-6%",
+        }}
+      >
+        {/* Trackpad notch */}
+        <div className="absolute left-1/2 top-[1px] h-[3px] w-16 -translate-x-1/2 rounded-b-[6px] bg-[#5d626d]/40" />
+      </div>
+    </div>
+  );
+}
+
+function DashboardPreview() {
+  return (
+    <div className="flex h-full w-full">
+      {/* Sidebar */}
+      <aside className="flex w-[28%] flex-col gap-1.5 bg-[#0F6E56] p-2 sm:p-3">
+        <div className="mb-2 flex items-center gap-1.5">
+          <div className="flex h-4 w-4 items-center justify-center rounded-[4px] bg-white text-[8px] font-bold text-[#0F6E56] sm:h-5 sm:w-5 sm:text-[10px]">W</div>
+          <span className="text-[8px] font-bold text-white sm:text-[10px]">Waintel</span>
+        </div>
+        {[
+          { label: "Dashboard", active: true },
+          { label: "Conversations", active: false },
+          { label: "Leads", active: false },
+          { label: "Orders", active: false },
+          { label: "Campaigns", active: false },
+          { label: "Settings", active: false },
+        ].map((it) => (
+          <div
+            key={it.label}
+            className={`rounded-[4px] px-1.5 py-1 text-[7px] font-semibold sm:text-[9px] ${
+              it.active ? "bg-white text-[#0F6E56]" : "text-white/85"
+            }`}
+          >
+            {it.label}
+          </div>
+        ))}
+      </aside>
+
+      {/* Main */}
+      <main className="flex-1 bg-[#F6F6FD] p-2 sm:p-3">
+        {/* Header */}
+        <div className="mb-2 flex items-center justify-between">
+          <div className="text-[9px] font-bold text-[#0B1319] sm:text-[11px]">Today</div>
+          <div className="flex h-3 w-3 items-center justify-center rounded-full bg-[#1D9E75] text-[6px] font-bold text-white sm:h-4 sm:w-4 sm:text-[8px]">
+            A
+          </div>
+        </div>
+
+        {/* Stat tiles */}
+        <div className="mb-2 grid grid-cols-3 gap-1">
+          {[
+            { label: "Orders", val: "47", up: "+12%" },
+            { label: "Revenue", val: "$1.8k", up: "+9%" },
+            { label: "AI handled", val: "94%", up: "+3%" },
+          ].map((s) => (
+            <div key={s.label} className="rounded-[4px] bg-white p-1 sm:p-1.5">
+              <div className="text-[6px] uppercase tracking-wider text-[#62626A] sm:text-[7px]">{s.label}</div>
+              <div className="text-[10px] font-bold text-[#0B1319] sm:text-[12px]">{s.val}</div>
+              <div className="text-[6px] font-semibold text-[#1D9E75] sm:text-[7px]">{s.up}</div>
+            </div>
+          ))}
+        </div>
+
+        {/* Conversations list */}
+        <div className="rounded-[4px] bg-white p-1 sm:p-1.5">
+          <div className="mb-1 flex items-center justify-between">
+            <div className="text-[7px] font-bold text-[#0B1319] sm:text-[9px]">Live Conversations</div>
+            <div className="text-[6px] text-[#62626A] sm:text-[7px]">5 active</div>
+          </div>
+          {[
+            { who: "Sara M.", snip: "Booked for 8:15 PM ✓", tag: "Restaurant", color: "#1D9E75" },
+            { who: "Daniel H.", snip: "Tagged 🔥 Hot lead", tag: "Real Estate", color: "#FF9D2E" },
+            { who: "Liam K.", snip: "Trial class Sat 10AM", tag: "Education", color: "#5C6BFF" },
+            { who: "Maya O.", snip: "Payment received ✓", tag: "E-commerce", color: "#1D9E75" },
+          ].map((c, i) => (
+            <div
+              key={i}
+              className={`flex items-center gap-1 py-0.5 text-[6px] sm:gap-1.5 sm:text-[8px] ${
+                i !== 3 ? "border-b border-[#EAEAF0]" : ""
+              }`}
+            >
+              <div
+                className="flex h-3 w-3 flex-shrink-0 items-center justify-center rounded-full text-[5px] font-bold text-white sm:h-4 sm:w-4 sm:text-[7px]"
+                style={{ background: c.color }}
+              >
+                {c.who[0]}
+              </div>
+              <div className="min-w-0 flex-1 truncate">
+                <span className="font-semibold text-[#0B1319]">{c.who}</span>
+                <span className="ml-1 text-[#62626A]">{c.snip}</span>
+              </div>
+              <span
+                className="flex-shrink-0 rounded-[2px] px-1 py-px text-[5px] font-semibold sm:text-[6px]"
+                style={{ color: c.color, background: c.color + "1a" }}
+              >
+                {c.tag}
+              </span>
+            </div>
+          ))}
+        </div>
+      </main>
+    </div>
+  );
+}
+
+/* HeroContent — single content block reused in both desktop overlay and
+   mobile stacked layout. Matches Stellar's hero-content spec exactly:
+   - 14px badge with 8px gap, mb-20px
+   - 1px divider, white/25, mb-20px
+   - Title: two block spans, 56px (lg) / 700 / line-height 1.3, second span has highlight
+   - Description: 16px / 1.5 / white-95, max-w-700, mb-24px
+   - CTAs: gap-16px, 16px/600, padding 16/24, radius 40px, mb-24px
+   - Feature pills row: gap-10px, 14px white/95, mb-24px
+   - Region badge (swiss-equivalent): 15px/600, white bg, padding 10/16, radius 40px
+*/
+function HeroContent() {
+  return (
+    <>
+      <div className="mb-5 inline-flex items-center gap-2 text-[14px] text-white">
+        <ShieldIcon size={16} />
+        <span>The Ghost Employee for your business</span>
+      </div>
+
+      <div className="mb-5 h-px w-full max-w-[480px] bg-white/25" />
+
+      {/* Stellar .hero-title spec: two block spans, 56px / 700 / line-height 1.3.
+          Second span has the highlighted word inline (color #B8D4FF in Stellar,
+          our brand-highlight green). Mobile drops to 34px. */}
+      <h1 className="mb-5">
+        <span className="block text-[34px] font-bold leading-[1.15] text-white sm:text-[44px] lg:text-[56px]">
+          Hire a Ghost Employee.
+        </span>
+        <span className="mb-2.5 block text-[34px] font-bold leading-[1.15] text-white sm:text-[44px] lg:text-[56px]">
+          Close customers on{" "}
+          <span className="text-brand-highlight">WhatsApp 24/7.</span>
+        </span>
+      </h1>
+
+      <p className="mb-6 max-w-[560px] text-[16px] font-normal leading-[1.5] text-white/95">
+        Waintel answers customers, takes orders, qualifies leads, books
+        appointments, and follows up on missed sales — automatically.
+        <strong> While you sleep.</strong>
+      </p>
+
+      <div className="mb-6 flex flex-wrap items-center gap-4">
+        <Link href={`${APP_URL}/register`} className="btn-dark">
+          Start free trial — 10 min setup
+          <ArrowRight />
+        </Link>
+        <Link href="#how-it-works" className="btn-ghost-light">
+          <PlayIcon />
+          Watch 3-min demo
+        </Link>
+      </div>
+
+      <div className="mb-6 flex flex-wrap items-center gap-2.5">
+        {[
+          { Icon: ShieldIcon, label: "14-day free trial" },
+          { Icon: KeyIcon, label: "No card required" },
+          { Icon: ZapSmallIcon, label: "10-min setup" },
+          { Icon: PlugSmallIcon, label: "Stripe + cards" },
+        ].map((f) => (
+          <div key={f.label} className="feature-pill-light">
+            <f.Icon size={15} />
+            <span>{f.label}</span>
+          </div>
+        ))}
+      </div>
+
+      <div className="feature-pill">
+        <MapPinIcon size={15} className="text-brand-500" />
+        <span className="font-semibold">Multilingual · Multi-channel · Global</span>
+      </div>
+    </>
   );
 }
 
