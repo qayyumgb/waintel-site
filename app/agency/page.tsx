@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { APP_URL, WA_LINK, pageMetadata } from "@/lib/seo";
+import { WA_LINK, pageMetadata } from "@/lib/seo";
 import { ShieldIcon, GlobeIcon, BoltIcon, PlugIcon, TargetIcon, CardIcon } from "@/components/Icons";
 
 export const metadata = pageMetadata({
@@ -213,8 +213,6 @@ export default function AgencyPage() {
           </div>
         </div>
       </section>
-      {/* placate unused */}
-      {APP_URL && null}
     </div>
   );
 }

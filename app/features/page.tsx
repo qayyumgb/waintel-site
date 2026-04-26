@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { APP_URL, pageMetadata, SITE_URL } from "@/lib/seo";
+import { APP_REGISTER_URL, pageMetadata, SITE_URL } from "@/lib/seo";
 import { WhatsAppConversation, type WAMessage } from "@/components/WhatsAppConversation";
 import {
   ChatIcon, CardIcon, RefreshIcon, TargetIcon, BoltIcon, MapPinIcon, PlugIcon, ShieldIcon,
@@ -215,7 +215,7 @@ export default function FeaturesPage() {
               for the way customers actually message businesses on WhatsApp.
             </p>
             <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
-              <Link href={`${APP_URL}/register`} className="btn-dark">
+              <Link href={APP_REGISTER_URL} target="_blank" rel="noopener noreferrer" className="btn-dark">
                 Start free trial — 10 min setup
                 <ArrowRight />
               </Link>
@@ -303,7 +303,7 @@ export default function FeaturesPage() {
               14-day free trial. No card required. Live in 10 minutes.
             </p>
             <Link
-              href={`${APP_URL}/register`}
+              href={APP_REGISTER_URL} target="_blank" rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-stellar-pill border-2 border-white bg-transparent px-8 py-4 text-[16px] font-semibold text-white transition-all hover:bg-white hover:text-brand-500"
             >
               Start your free trial

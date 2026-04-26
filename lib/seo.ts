@@ -9,6 +9,10 @@ export const SITE_DESCRIPTION =
 
 export const APP_URL = "https://app.waintel.io";
 
+// Where the "Get started / Start free trial / Register" buttons send users.
+// Currently the dashboard hosts the register flow at root.
+export const APP_REGISTER_URL = "https://waintel-dashboard.vercel.app/";
+
 // Placeholder WhatsApp number — REPLACE with real number before launch
 export const WA_NUMBER = "10000000000";
 export const WA_LINK = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(

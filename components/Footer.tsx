@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Logo } from "./Logo";
-import { APP_URL, WA_LINK } from "@/lib/seo";
+import { APP_REGISTER_URL, WA_LINK } from "@/lib/seo";
 
 const PRODUCT_LINKS = [
   { label: "Features", href: "/features" },
@@ -49,7 +49,7 @@ export function Footer() {
               </p>
 
               <div className="mt-6 flex flex-wrap gap-3">
-                <Link href={`${APP_URL}/register`} className="btn-primary">
+                <Link href={APP_REGISTER_URL} target="_blank" rel="noopener noreferrer" className="btn-primary">
                   Start free trial
                   <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                     <path d="M3 7h8m0 0L7 3m4 4l-4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />

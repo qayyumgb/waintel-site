@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { APP_URL, WA_LINK, pageMetadata } from "@/lib/seo";
+import { APP_REGISTER_URL, WA_LINK, pageMetadata } from "@/lib/seo";
 import { WhatsAppConversation, type WAMessage } from "@/components/WhatsAppConversation";
 import {
   HomeIcon, StethoscopeIcon, ShoppingBagIcon, GraduationIcon, HotelIcon,
@@ -128,7 +128,7 @@ export default function HomePage() {
 
             {/* CTA Buttons */}
             <div className="hero-buttons">
-              <a href={`${APP_URL}/register`} className="btn-stellar-id">
+              <a href={APP_REGISTER_URL} target="_blank" rel="noopener noreferrer" className="btn-stellar-id">
                 Start free trial — 10 min setup
                 <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M6.5 10.5L9.5 7.5L6.5 4.5" stroke="white" strokeWidth="2" strokeLinecap="square" />
@@ -267,7 +267,7 @@ export default function HomePage() {
                 ))}
               </ul>
 
-              <Link href={`${APP_URL}/register`} className="btn-primary">
+              <Link href={APP_REGISTER_URL} target="_blank" rel="noopener noreferrer" className="btn-primary">
                 Get started
                 <ArrowRight />
               </Link>
@@ -379,7 +379,7 @@ export default function HomePage() {
             </div>
 
             <div className="flex justify-center">
-              <Link href={`${APP_URL}/register`} className="btn-primary-lg">
+              <Link href={APP_REGISTER_URL} target="_blank" rel="noopener noreferrer" className="btn-primary-lg">
                 Start your free trial
                 <ArrowRight />
               </Link>
@@ -550,7 +550,8 @@ export default function HomePage() {
                     ))}
                   </ul>
                   <Link
-                    href={p.name === "Agency" ? "/contact" : `${APP_URL}/register`}
+                    href={p.name === "Agency" ? "/contact" : APP_REGISTER_URL}
+                    {...(p.name !== "Agency" && { target: "_blank", rel: "noopener noreferrer" })}
                     className={p.best ? "btn-primary-block" : "btn-outline"}
                   >
                     {p.cta}
@@ -585,7 +586,7 @@ export default function HomePage() {
               Set up today. First month free. No card required.
             </p>
             <div className="flex flex-wrap items-center justify-center gap-4">
-              <Link href={`${APP_URL}/register`} className="btn-primary-lg">
+              <Link href={APP_REGISTER_URL} target="_blank" rel="noopener noreferrer" className="btn-primary-lg">
                 Start free trial — No card
                 <ArrowRight />
               </Link>
@@ -827,7 +828,7 @@ function HeroContent() {
       </p>
 
       <div className="mb-6 flex flex-wrap items-center gap-4">
-        <Link href={`${APP_URL}/register`} className="btn-dark">
+        <Link href={APP_REGISTER_URL} target="_blank" rel="noopener noreferrer" className="btn-dark">
           Start free trial — 10 min setup
           <ArrowRight />
         </Link>

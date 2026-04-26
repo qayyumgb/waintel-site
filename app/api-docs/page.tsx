@@ -92,7 +92,7 @@ export default function ApiDocsPage() {
               contacts, orders, leads, and campaigns. HMAC-signed webhooks for every event.
             </p>
             <div className="flex flex-wrap items-center gap-4">
-              <Link href={`${APP_URL}/developer`} className="btn-dark">
+              <Link href={`${APP_URL}/developer`} target="_blank" rel="noopener noreferrer" className="btn-dark">
                 Get an API key
                 <ArrowRight />
               </Link>
@@ -151,7 +151,7 @@ export default function ApiDocsPage() {
                   Get an API key from your dashboard. Webhook signing secrets are generated per endpoint.
                 </p>
                 <Link
-                  href={`${APP_URL}/developer`}
+                  href={`${APP_URL}/developer`} target="_blank" rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 rounded-stellar-pill border-2 border-white bg-transparent px-6 py-3 text-[14px] font-semibold text-white hover:bg-white hover:text-brand-500"
                 >
                   Open developer dashboard

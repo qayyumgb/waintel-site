@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { APP_URL, pageMetadata, SITE_URL } from "@/lib/seo";
+import { APP_REGISTER_URL, pageMetadata, SITE_URL } from "@/lib/seo";
 import { INDUSTRIES } from "./industries";
 import { WhatsAppConversation } from "@/components/WhatsAppConversation";
 
@@ -90,7 +90,7 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
                 {ind.hero.description}
               </p>
               <div className="flex flex-wrap items-center gap-3">
-                <Link href={`${APP_URL}/register`} className="btn-dark">
+                <Link href={APP_REGISTER_URL} target="_blank" rel="noopener noreferrer" className="btn-dark">
                   Start free trial — 10 min setup
                   <ArrowRight />
                 </Link>
@@ -223,7 +223,7 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
               14-day free trial. No card required. Live in 10 minutes.
             </p>
             <Link
-              href={`${APP_URL}/register`}
+              href={APP_REGISTER_URL} target="_blank" rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-stellar-pill border-2 border-white bg-transparent px-8 py-4 text-[16px] font-semibold text-white transition-all hover:bg-white hover:text-brand-500"
             >
               Start your free trial

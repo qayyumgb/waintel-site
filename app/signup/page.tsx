@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
-import { APP_URL, pageMetadata } from "@/lib/seo";
+import { APP_REGISTER_URL, pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
   title: "Start free trial",
@@ -9,5 +9,5 @@ export const metadata = pageMetadata({
 });
 
 export default function SignupRedirect() {
-  redirect(`${APP_URL}/register`);
+  redirect(APP_REGISTER_URL);
 }

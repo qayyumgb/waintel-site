@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { APP_URL, pageMetadata, WA_LINK } from "@/lib/seo";
+import { APP_REGISTER_URL, pageMetadata, WA_LINK } from "@/lib/seo";
 import { PricingFAQ } from "./PricingFAQ";
 
 export const metadata = pageMetadata({
@@ -149,7 +149,8 @@ export default function PricingPage() {
                 </div>
 
                 <Link
-                  href={plan.name === "Agency" ? "/contact" : `${APP_URL}/register`}
+                  href={plan.name === "Agency" ? "/contact" : APP_REGISTER_URL}
+                  {...(plan.name !== "Agency" && { target: "_blank", rel: "noopener noreferrer" })}
                   className={`mb-3 ${plan.primary ? "btn-primary-block" : "btn-outline"}`}
                 >
                   {plan.cta}
@@ -232,7 +233,7 @@ export default function PricingPage() {
             </p>
             <div className="flex flex-wrap items-center justify-center gap-4">
               <Link
-                href={`${APP_URL}/register`}
+                href={APP_REGISTER_URL} target="_blank" rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 rounded-stellar-pill bg-white px-8 py-4 text-[16px] font-semibold text-brand-600 hover:bg-ink-50"
               >
                 Start free trial

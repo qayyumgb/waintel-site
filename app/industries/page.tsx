@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { APP_URL, pageMetadata } from "@/lib/seo";
+import { APP_REGISTER_URL, pageMetadata } from "@/lib/seo";
 import { INDUSTRIES } from "./[slug]/industries";
 
 export const metadata = pageMetadata({
@@ -32,7 +32,7 @@ export default function IndustriesIndexPage() {
               multilingual out of the box.
             </p>
             <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
-              <Link href={`${APP_URL}/register`} className="btn-dark">
+              <Link href={APP_REGISTER_URL} target="_blank" rel="noopener noreferrer" className="btn-dark">
                 Start free trial — 10 min setup
                 <ArrowRight />
               </Link>

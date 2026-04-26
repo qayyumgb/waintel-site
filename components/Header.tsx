@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Logo } from "./Logo";
-import { APP_URL } from "@/lib/seo";
+import { APP_URL, APP_REGISTER_URL } from "@/lib/seo";
 
 const NAV_LINKS = [
   { href: "/features", label: "Features" },
@@ -39,10 +39,10 @@ export function Header() {
         </nav>
 
         <div className="hidden items-center gap-3 lg:flex">
-          <Link href={`${APP_URL}/login`} className="nav-pill-link">
+          <Link href={`${APP_URL}/login`} target="_blank" rel="noopener noreferrer" className="nav-pill-link">
             Sign in
           </Link>
-          <Link href={`${APP_URL}/register`} className="btn-primary">
+          <Link href={APP_REGISTER_URL} target="_blank" rel="noopener noreferrer" className="btn-primary">
             Get started
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
               <path d="M3 7h8m0 0L7 3m4 4l-4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -81,14 +81,14 @@ export function Header() {
             ))}
             <hr className="my-2 border-ink-100" />
             <Link
-              href={`${APP_URL}/login`}
+              href={`${APP_URL}/login`} target="_blank" rel="noopener noreferrer"
               onClick={() => setMobileOpen(false)}
               className="rounded-stellar-md px-4 py-3 text-[16px] font-semibold text-ink-900 hover:bg-ink-50"
             >
               Sign in
             </Link>
             <Link
-              href={`${APP_URL}/register`}
+              href={APP_REGISTER_URL} target="_blank" rel="noopener noreferrer"
               onClick={() => setMobileOpen(false)}
               className="btn-primary mt-2"
             >
